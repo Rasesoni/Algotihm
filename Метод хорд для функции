@@ -1,28 +1,22 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
- 
 double func(double x)
 {
     return 3*x - 4*log(x)-5;
 }
- 
-double find(double infinum, double supremum, double epsilon)
+double find(double a, double b, double eps)
 {
-    while (fabs(supremum - infinum) > epsilon)
+    while (fabs(b-a)>eps)
     {
-        infinum = supremum - (supremum - infinum) * func(supremum) / (func(
-                supremum) - func(infinum));
-        supremum = infinum - (infinum - supremum) * func(infinum) / (func(
-                infinum) - func(supremum));
+        a = b - (b - a) * func(b) / (func(b) - func(a));
+        b= a - (a - b) * func(a) / (func(a) - func(b));
     }
- 
-    return supremum;
+    return b;
 }
- 
 int main()
 {
     double a = 2, b = 30;
-    cout << find(a, b, 0.0001) << std::endl;
+    cout << find(a, b, 0.0001) <<endl;
     return 0;
 }
