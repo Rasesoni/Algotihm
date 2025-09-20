@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+double func(double x)
+{
+    return 3*x - 4*log(x)-5;
+}
+double find(double a, double b, double eps)
+{
+    while (fabs(b-a)>eps)
+    {
+        a = b - (b - a) * func(b) / (func(b) - func(a));
+        b= a - (a - b) * func(a) / (func(a) - func(b));
+    }
+    return b;
+}
+int main()
+{
+    double a = 2, b = 30;
+    cout << find(a, b, 0.0001) <<endl;
+    return 0;
+}
+////////////////////////////////////////
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()  {
+    // [2-4] f(x)=3x-4lnx-5
+    double a=2;// начало интервала
+    double b=30;// конец интервала 
+    double epsilon=0.0001;
+    double c;
+    int counter = 0;
+    if((3*a-4*log(a)-5)*(3*b-4*log(b)-5)>=0){
+        cout<<"No res"<< endl;
+        return 1 ;// Завершение программы с кодом 1
+    }
+    while((b-a)>=epsilon){
+        counter++;
+        c=(a+b)/2;// первая середина 
+        cout<<counter<<':'<<c<<endl;
+        
+        double f_c=3*c-4*log(c)-5;
+        
+        if(fabs(f_c)<epsilon){
+            break;
+        }
+        
+        if ((3*a-4*log(a)-5)*f_c<0){
+            // корень в левой части
+            b=c;
+        }
+        else{
+            a=c;
+        }
+        
+    }
+    
+    
+    cout<<"result:"<<c<<endl;
+    return 0;
+}
