@@ -1,23 +1,28 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-double func(double x)
-{
-    return 3*x - 4*log(x)-5;
-}
-double find(double a, double b, double eps)
-{
-    while (fabs(b-a)>eps)
-    {
-        a = b - (b - a) * func(b) / (func(b) - func(a));
-        b= a - (a - b) * func(a) / (func(a) - func(b));
-    }
-    return b;
-}
-int main()
-{
-    double a = 2, b = 30;
-    cout << find(a, b, 0.0001) <<endl;
+int main()  {
+    double a=2;
+    double b=4;
+    double eps=0.000001;
+    double d;
+    do{
+        // формула хорд
+        // x=(a*f(b)-b*f(a))/(f(b)-f(a))
+        d=((a*(3*b-4*log(b)-5)-b*(3*a-4*log(a)-5))/((3*b-4*log(b)-5)-(3*a-4*log(a)-5)));
+        double f_d=3*d-4*log(d)-5;
+        if (fabs(f_d)<eps){
+            break;
+        }
+        if ((3*a-4*log(a)-5)*f_d<0){
+            b=d;
+        }
+        else{
+            a=d;
+        }
+        
+    }while((b-a)>=eps);
+    cout<<"res:"<<d<<endl;
     return 0;
 }
 ////////////////////////////////////////
