@@ -8,3 +8,12 @@
 8.Положить на кусок колбасы на 1-ый кусок хлеба
 9.Положить 2-ой кусок хлеба на колбасу 
 10.Конец
+/////////////
+#include <iostream>
+using namespace std;
+int main(){
+    int m,n;
+    cin>>m>>n;
+    cout<<"Answer:"<<23*m-37*n;
+    return 0;
+}
