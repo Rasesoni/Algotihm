@@ -1,0 +1,35 @@
+Задание 1
+#include <iostream>
+#include<array>
+using namespace std;
+
+int main() {
+    int arr[] = {1,2,3,4,5,6};
+    int n = end(arr)-begin(arr); 
+    int x;
+    cout << "Введите элемент для поиска: ";
+    cin >> x;
+    int left = 0;
+    right = n - 1;
+    int mid;
+    bool found = false;
+    int pos = 0;
+    while (left <= right) {
+        mid = (left + right) / 2;
+        if (arr[mid] == x) {
+            found = true;
+            pos = mid;
+            break;
+        } else if (arr[mid] < x) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    if (found) {
+        cout << "Элемент найден на позиции: " << pos << endl;
+    } else {
+        cout << "Элемент не найден. Его можно вставить на позицию: " << left << endl;
+    }
+    return 0;
+}
