@@ -1,1 +1,33 @@
+// Поиск НОД
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL,"Russian"); //импорт русской библиотеки(необезательно)
+    long long a,b;//объявление переменной
+    cout<<"Введите 2 числа для НОД \n";
+    cin >> a;
+    cin >> b;
+    if (a<0) a=-a;
+    if (b<0) b=-b;
+    if (a==0 && b==0){
+        cout << "НОД (0,0), поэтому бесконечно множество общих делителей\n";
+        return 0;
+    }
+    if (a==0){cout << "НОД("<< a << ','<< b <<")="<< b <<".\n";}
+    if (b==0){cout << "НОД("<< a << ','<< b <<")="<< a <<".\n";}
+    
+    long long res=1;
+    long long lim=min(a,b);
+    for (long long i=1;i<=lim;i++){
+        if (a%i==0 && b%i==0){
+            res=i;
+        }
+    }
+    cout << "НОД("<< a << ','<< b <<")="<< res <<".\n";
+    return 0;
+
+
+}
 
