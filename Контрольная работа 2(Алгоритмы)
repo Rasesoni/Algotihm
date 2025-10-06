@@ -144,3 +144,37 @@ int main() {
 
 }
 
+// Поиск НОД (5 алгоритм)
+#include <iostream>
+
+using namespace std;
+long long nod_mine(long long a, long long b){
+    while(b!=0){
+        long long result = a%b;
+        a=b;
+        b=result;
+    }
+    return a;
+}
+int main() {
+    setlocale(LC_ALL,"Russian"); //импорт русской библиотеки(необезательно)
+    long long a,b;//объявление переменной
+    cout<<"Введите 2 числа для НОД \n";
+    cin >> a;
+    cin >> b;
+    if (a<0) a=-a;
+    if (b<0) b=-b;
+    if (a==0 && b==0){
+        cout << "НОД (0,0), поэтому бесконечно множество общих делителей\n";
+        return 0;
+    }
+    if (a==0){cout << "НОД("<< a << ','<< b <<")="<< b <<".\n";}
+    if (b==0){cout << "НОД("<< a << ','<< b <<")="<< a <<".\n";}
+    
+
+    cout << "НОД("<< a << ','<< b <<")="<< nod_mine(a,b) <<".\n";
+    return 0;
+
+}
+
+
