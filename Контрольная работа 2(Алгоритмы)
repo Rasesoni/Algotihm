@@ -176,5 +176,45 @@ int main() {
     return 0;
 
 }
+#include <iostream>
 
+using namespace std;
+long long nod_mine(long long a, long long b,long long c, long long d){
+    long long raznost=0;
+    bool flag=false;
+        while (flag==false){
+        if (a==b){
+            flag = true;;
+        }
+        else if(a<b){
+            raznost=b-a;
+            b=a;
+            a=raznost;
+        }
+        else{ // a!=b a>b
+            raznost=a-b;
+            a=b;
+            b=raznost;
+        }
+    }
+    return a; // Можно  и b возвращать
+}
+long long four_mine(long long a, long long b, long long c, long long d){
+    long long result1=nod_mine(a,b);
+    long long result2=nod_mine(result2,c);
+    long long result3=nod_mine(result3,d);
+    return result3;
+}
+int main() {
+    setlocale(LC_ALL,"Russian"); //импорт русской библиотеки(необезательно)
+    long long a,b,c,d;//объявление переменной
+    cout<<"Введите 4 числа для НОД \n";
+    cin >> a;
+    cin >> b;
+    cin >> c;
+    cin >> d;
+    cout << "НОД("<< a << ','<< b <<',' << c << ',' << d <<")="<< nod_mine(a,b,c,d) <<".\n";
+    return 0;
+
+}
 
