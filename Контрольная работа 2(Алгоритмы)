@@ -99,3 +99,48 @@ int main() {
     return 0;
 
 }
+// Поиск НОД(4 алгоритм)
+#include <iostream>
+
+using namespace std;
+long long nod_mine(long long a, long long b){
+    long long raznost=0;
+    bool flag=false;
+        while (flag==false){
+        if (a==b){
+            flag = true;;
+        }
+        else if(a<b){
+            raznost=b-a;
+            b=a;
+            a=raznost;
+        }
+        else{ // a!=b a>b
+            raznost=a-b;
+            a=b;
+            b=raznost;
+        }
+    }
+    return a; // Можно  и b возвращать
+}
+int main() {
+    setlocale(LC_ALL,"Russian"); //импорт русской библиотеки(необезательно)
+    long long a,b;//объявление переменной
+    cout<<"Введите 2 числа для НОД \n";
+    cin >> a;
+    cin >> b;
+    if (a<0) a=-a;
+    if (b<0) b=-b;
+    if (a==0 && b==0){
+        cout << "НОД (0,0), поэтому бесконечно множество общих делителей\n";
+        return 0;
+    }
+    if (a==0){cout << "НОД("<< a << ','<< b <<")="<< b <<".\n";}
+    if (b==0){cout << "НОД("<< a << ','<< b <<")="<< a <<".\n";}
+    
+
+    cout << "НОД("<< a << ','<< b <<")="<< nod_mine(a,b) <<".\n";
+    return 0;
+
+}
+
