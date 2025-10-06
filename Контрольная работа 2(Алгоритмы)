@@ -1,4 +1,4 @@
-// Поиск НОД
+// Поиск НОД (1 алгоритм)
 #include <iostream>
 #include <algorithm>
 using namespace std;
