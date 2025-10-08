@@ -1,0 +1,45 @@
+Задание 1
+#include <iostream>
+
+using namespace std;
+
+// Функция для нахождения НОД двух чисел
+long long nod_mine(long long a, long long b) {
+    // Обработка случая, когда одно из чисел равно 0
+    if (a == 0) return b;
+    if (b == 0) return a;
+    
+    while (a != b) {
+        if (a > b) {
+            a = a - b;
+        } else {
+            b = b - a;
+        }
+    }
+    return a;
+}
+
+// Функция для нахождения НОД четырех чисел
+long long nod_for_four(long long a, long long b, long long c, long long d) {
+    return nod_mine(nod_mine(nod_mine(a, b), c), d);
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian"); // импорт русской библиотеки (необязательно)
+    
+    long long a, b, c, d; // объявление всех четырех переменных
+    
+    cout << "Введите 4 числа для НОД \n";
+    cin >> a;
+    cin >> b;
+    cin >> c;
+    cin >> d;
+    
+    // Проверка на нулевые значения для всех четырех чисел
+    if (a == 0 && b == 0 && c == 0 && d == 0) {
+        cout << "НОД(0,0,0,0)=0.\n";
+    } else {
+        cout << "НОД(" << a << ',' << b << ',' << c << ',' << d << ")=" << nod_for_four(a, b, c, d) << ".\n";
+    }
+    
+    return 0;
